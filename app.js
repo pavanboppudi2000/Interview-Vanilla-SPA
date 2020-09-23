@@ -8,6 +8,10 @@ import Register     from './views/pages/Register.js'
 
 import Navbar       from './views/components/Navbar.js'
 import Bottombar    from './views/components/Bottombar.js' 
+import IntervieweeList from './views/schedules/intervieweelist.js'
+import InterviewerList from './views/schedules/interviewerlist.js'
+import CreateInterviewee from './views/schedules/createinterviewee.js'
+import CreateInterviewer from './views/schedules/createinterviewer.js'
 
 import Utils        from './services/Utils.js'
 
@@ -16,7 +20,11 @@ const routes = {
     '/'             : ScheduleList
     , '/about'      : About
     , '/schedule/:id'      : ShowSchedule
-    , '/register'   : Register
+    , '/interviewees'   : IntervieweeList
+    ,'/interviewer'  : InterviewerList
+    ,'/createinterviewee' : CreateInterviewee
+    ,'/createinterviewer' : CreateInterviewer
+
 };
 
 
