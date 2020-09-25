@@ -27,8 +27,8 @@ let Home = {
            <section class="section">
                <ul>
                    ${ posts.map(post => 
-                       /*html*/`<h3><p>Interviewer :${post.email1}</h3>
-                       <h3><p>Interviewee :${post.email2}</h3>
+                       /*html*/`<h3><p>Interviewer Email:${post.email1}</h3>
+                       <h3><p>Interviewee Email :${post.email2}</h3>
                        <p>${post.st}</p>
                        <p>${post.end}</p>
                        <h2><a href="#/schedule/${post.id}"> View </a>
