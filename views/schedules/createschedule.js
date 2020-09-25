@@ -1,5 +1,5 @@
 
-let postsInterviewer = async (data) => {
+let createInterviewer = async (data) => {
     try {
         const response = await fetch(`http://localhost:3000/schedules`, {
          method: 'POST',
@@ -17,10 +17,10 @@ let postsInterviewer = async (data) => {
     }
  }
  
- let Home = {
+ let CreatePage = {
      render : async () => {
          let view =  /*html*/`
-             <div id="viewing">
+             <div id="createschedule">
              <br><br>
             Email1: <input class="input" id="email1" type="email" ><br><br>
             Email2: <input class="input" id="email2" type="email"><br>
@@ -42,10 +42,10 @@ let postsInterviewer = async (data) => {
  
             let data = { "email1": email1,"email2": email2, "st": st, "end": end};
  
-            let posts=await  postsInterviewer(data);
+            let posts=await  createInterviewer(data);
               
             console.log(posts);
-             document.getElementById("viewing").innerHTML +=/*html*/`${ posts["eor"].map(restu => 
+             document.getElementById("createschedule").innerHTML +=/*html*/`${ posts["eor"].map(restu => 
              /*html*/`<h3>${restu}</h3>`).join('\n ')} `;
            
             
@@ -56,4 +56,4 @@ let postsInterviewer = async (data) => {
   
   }
   
-  export default Home;
+  export default CreatePage;

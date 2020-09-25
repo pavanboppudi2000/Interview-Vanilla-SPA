@@ -41,10 +41,10 @@ let Show = {
             <p>${posts.st}</p>
             <p>${posts.end}</p>
             <h1> Interviewee Details</h1>
-            <h3> Name : ${interviewee.name}</h3>
-            <h3> College : ${interviewee.clg}</h3>
-            <h3> CGPA : ${interviewee.cgpa}</h3>
-            <h3> <a href="${interviewee.resume}">Resume</a></h3>
+            <h3> Name : ${interviewee["content"].name}</h3>
+            <h3> College : ${interviewee["content"].clg}</h3>
+            <h3> CGPA : ${interviewee["content"].cgpa}</h3>
+            <h3> <a href="http://localhost:3000/${interviewee["resumes"][interviewee["content"].id]}">Resume</a></h3>
             <button id="btns" type="button" name="delete">Delete</button>
 
                        
@@ -56,10 +56,16 @@ let Show = {
    , after_render: async () => {
     document.getElementById("btns").addEventListener ("click", async () => {
        const re=Utils.parseRequestURL();
-       let posts=await  deleteInterviewer(re.id);
+       if (confirm("Press a button!")) {
+        let posts=await  deleteInterviewer(re.id);
+        window.location.replace("#/");
+      } else {
+        window.location.replace("#/");
+      }
+       
          
        //console.log(posts);
-       window.location.replace("#/");
+      
       
        
     })

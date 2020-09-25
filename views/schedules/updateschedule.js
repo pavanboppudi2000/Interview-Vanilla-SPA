@@ -39,7 +39,7 @@ let updatesInterviewer = async (data,id) => {
         let request = Utils.parseRequestURL()
         let posts = await getPostToUpdate('schedules',request.id)
          let view =  /*html*/`
-             <div id="viewing">
+             <div id="update">
              <br><br>
             Email1: <input class="input" id="email1" type="email" value=${posts.email1} ><br><br>
             Email2: <input class="input" id="email2" type="email" value=${posts.email2}><br>
@@ -67,7 +67,7 @@ let updatesInterviewer = async (data,id) => {
               
             console.log(posts);
             
-             document.getElementById("viewing").innerHTML +=/*html*/`${ posts["eor"].map(restu => 
+             document.getElementById("update").innerHTML +=/*html*/`${ posts["eor"].map(restu => 
              /*html*/`<h3>${restu}</h3>`).join('\n ')} `;
             }
             catch (err) {

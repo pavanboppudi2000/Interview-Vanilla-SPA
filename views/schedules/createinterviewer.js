@@ -20,7 +20,7 @@ let postsInterviewer = async (data) => {
 let Home = {
     render : async () => {
         let view =  /*html*/`
-            <div id="viewing">
+            <div id="interviewercreate">
             <br><br>
            Email: <input class="input" id="email" type="email" ><br><br>
            Name: <input class="input" id="name" type="string"><br>
@@ -40,7 +40,7 @@ let Home = {
            let posts=await  postsInterviewer(data);
              
            console.log(posts);
-            document.getElementById("viewing").innerHTML +=/*html*/`${ posts["eor"].map(restu => 
+            document.getElementById("interviewercreate").innerHTML +=/*html*/`${ posts["eor"].map(restu => 
             /*html*/`<h3>${restu}</h3>`).join('\n ')} `;
           
            

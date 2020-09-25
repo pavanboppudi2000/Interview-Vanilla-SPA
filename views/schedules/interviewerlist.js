@@ -1,4 +1,4 @@
-let getPostsList = async () => {
+let getInterviewerList = async () => {
     const options = {
        method: 'GET',
        headers: {
@@ -15,9 +15,9 @@ let getPostsList = async () => {
    }
 }
 
-let Home = {
+let Interviewerlis = {
    render : async () => {
-       let posts = await getPostsList()
+       let posts = await getInterviewerList()
        let view =  /*html*/`
            <section class="section">
            <h3><a class="navbar-item" href="/#/createinterviewer">
@@ -49,4 +49,4 @@ let Home = {
 
 }
 
-export default Home;
+export default Interviewerlis;

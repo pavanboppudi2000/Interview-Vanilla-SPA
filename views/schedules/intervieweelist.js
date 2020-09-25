@@ -1,4 +1,4 @@
-let getPostsList = async () => {
+let getIntervieweeList = async () => {
     const options = {
        method: 'GET',
        headers: {
@@ -15,20 +15,22 @@ let getPostsList = async () => {
    }
 }
 
-let Home = {
+let IntervieweeLis = {
    render : async () => {
-       let posts = await getPostsList()
+       let posts = await getIntervieweeList()
+       console.log(posts);
        let view =  /*html*/`
            <section class="section">
            <a class="navbar-item" href="/#/createinterviewee">
            Interviewee
        </a>
                <ul>
-                   ${ posts.map(post => 
+                   ${ posts["content"].map(post => 
                        /*html*/`<h3><p>Email :${post.email}</h3>
                        <h3><p>Name :${post.name}</h3>
                        <p> College :${post.clg}</p>
                        <p> CGPA  :${post.cgpa}</p>
+                       <a href="http://localhost:3000/${posts["resumes"][post.id]}">Resume</a>
                        
                        `
                        ).join('\n ')
@@ -43,4 +45,4 @@ let Home = {
 
 }
 
-export default Home;
+export default IntervieweeLis;

@@ -17,45 +17,55 @@ let postsInterviewer = async (data) => {
     }
  }
 
-let Home = {
+let CreateInterviewee = {
     render : async () => {
         let view =  /*html*/`
-            <section class="section">
+        <form id="new_user_form">
             <br><br>
            Email: <input class="input" id="email" type="email" ><br><br>
            Name: <input class="input" id="name" type="string"><br>
             <br>
             College: <input class="input" id="clg" type="string" ><br><br>
             Cgpa: <input class="input" id="cgpa" ><br><br>
-            <input type="file" id="resume" name="resume"><br><br>
+
+            <input type="file" class="form-control-file" id="resume" name="resume">            <br><br>
 
 
 
 
-           <input class="button" id="but" type="submit">
-            </section>                        
+           <button class="button" id="but" >Create</button>
+            </form>                        
         `
         return view
     }
     , after_render: async () => {
-        document.getElementById("but").addEventListener ("click", async () => {
-            let name       = document.getElementById("name").value;
-            let email        = document.getElementById("email").value;
-            let cgpa =document.getElementById("cgpa").value;
-            const selectedFile = document.getElementById('resume').files[0];
+        const new_form = document.getElementById("new_user_form");
+        new_form.onsubmit =   async (e) => {
+            e.preventDefault();
+            const formData = new FormData(new_form);
+            let r = await fetch('http://localhost:3000/interviewees', {
+                method: 'POST',
+                body: formData 
+              });
+            console.log(r);
+        // document.getElementById("but").addEventListener ("click", async () => {
+        //     let name       = document.getElementById("name").value;
+        //     let email        = document.getElementById("email").value;
+        //     let cgpa =document.getElementById("cgpa").value;
+        //     const selectedFile = document.getElementById('resume').files[0];
 
-           let data = { "name": name,"email": email , "cgpa": cgpa, "resume": selectedFile};
+        //    let data = { "name": name,"email": email , "cgpa": cgpa, "resume": selectedFile};
 
-           let posts=await  postsInterviewer(data);
+        //    let posts=await  postsInterviewer(data);
              
-           console.log(posts);
+        //    console.log(posts);
             // document.getElementById("viewing").innerHTML +=/*html*/`${ posts["eor"].map(restu => 
             // /*html*/`<h3>${restu}</h3>`).join('\n ')} `;
           
            
-        })
+        } //)
     }
  
  }
  
- export default Home;
+ export default CreateInterviewee;
