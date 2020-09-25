@@ -20,8 +20,11 @@ let Home = {
    render : async () => {
        let posts = await getPostsList()
        let view =  /*html*/`
+       <br><br>
+      <h2> <a class="navbar-item" href="/#/createschedule">
+       New Schedule
+       </a></h1>
            <section class="section">
-               <h1> Home </h1>
                <ul>
                    ${ posts.map(post => 
                        /*html*/`<h3><p>Interviewer :${post.email1}</h3>
@@ -29,7 +32,8 @@ let Home = {
                        <p>${post.st}</p>
                        <p>${post.end}</p>
                        <h2><a href="#/schedule/${post.id}"> View </a>
-                       <a href="#/deleteschedule/${post.id}">Delete </a></h2>
+                       <a href="#/updateschedule/${post.id}">Update</a></h2>
+
                        
                        `
                        ).join('\n ')

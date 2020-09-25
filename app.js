@@ -1,10 +1,7 @@
 "use strict";
 
 import ScheduleList         from './views/schedules/index.js'
-import About        from './views/pages/About.js'
-import Error404     from './views/pages/Error404.js'
 import ShowSchedule     from './views/schedules/show.js'
-import Register     from './views/pages/Register.js'
 
 import Navbar       from './views/components/Navbar.js'
 import Bottombar    from './views/components/Bottombar.js' 
@@ -12,23 +9,24 @@ import IntervieweeList from './views/schedules/intervieweelist.js'
 import InterviewerList from './views/schedules/interviewerlist.js'
 import CreateInterviewee from './views/schedules/createinterviewee.js'
 import CreateInterviewer from './views/schedules/createinterviewer.js'
+import CreateSchedule  from './views/schedules/createschedule.js'
+import UpdateSchedule  from './views/schedules/updateschedule.js'
 
 import Utils        from './services/Utils.js'
 
-// List of supported routes. Any url other than these routes will throw a 404 error
 const routes = {
     '/'             : ScheduleList
-    , '/about'      : About
     , '/schedule/:id'      : ShowSchedule
     , '/interviewees'   : IntervieweeList
     ,'/interviewer'  : InterviewerList
     ,'/createinterviewee' : CreateInterviewee
     ,'/createinterviewer' : CreateInterviewer
+    , '/createschedule'  : CreateSchedule
+    , '/updateschedule/:id' : UpdateSchedule
 
 };
 
 
-// The router code. Takes a URL, checks against the list of supported routes and then renders the corresponding content page.
 const router = async () => {
 
     // Lazy load view element:

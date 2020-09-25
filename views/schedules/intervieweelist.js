@@ -20,7 +20,9 @@ let Home = {
        let posts = await getPostsList()
        let view =  /*html*/`
            <section class="section">
-               <h1> Home </h1>
+           <a class="navbar-item" href="/#/createinterviewee">
+           Interviewee
+       </a>
                <ul>
                    ${ posts.map(post => 
                        /*html*/`<h3><p>Email :${post.email}</h3>

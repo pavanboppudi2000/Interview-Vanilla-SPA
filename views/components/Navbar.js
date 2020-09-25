@@ -2,7 +2,7 @@ let Navbar = {
     render: async () => {
         let view =  /*html*/`
              <nav class="navbar" role="navigation" aria-label="main navigation">
-                            <a class="navbar-item" href="/#/">
+             <h1>  <a class="navbar-item" href="/#/">
                                 Home
                             </a>
                             <a class="navbar-item" href="/#/interviewees">
@@ -10,13 +10,7 @@ let Navbar = {
                             </a>
                             <a class="navbar-item" href="/#/interviewer">
                                 Interviewer
-                            </a>
-                            <a class="navbar-item" href="/#/createinterviewee">
-                                Interviewee
-                            </a>
-                            <a class="navbar-item" href="/#/createinterviewer">
-                                Interviewer
-                            </a>
+                            </a></h1>
 
             </nav>
         `
