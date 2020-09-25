@@ -33,6 +33,7 @@ let Home = {
                        <p>${post.end}</p>
                        <h2><a href="#/schedule/${post.id}"> View </a>
                        <a href="#/updateschedule/${post.id}">Update</a></h2>
+                       
 
                        
                        `

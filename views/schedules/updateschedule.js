@@ -1,6 +1,6 @@
 import Utils        from '../../services/Utils.js'
 
-let postsInterviewer = async (data,id) => {
+let updatesInterviewer = async (data,id) => {
     try {
         const response = await fetch(`http://localhost:3000/schedules/`+id, {
          method: 'PUT',
@@ -17,7 +17,7 @@ let postsInterviewer = async (data,id) => {
         console.log('Error getting documents', err)
     }
  }
- let getPostsList = async (resource,id) => {
+ let getPostToUpdate = async (resource,id) => {
     const options = {
        method: 'GET',
        headers: {
@@ -34,10 +34,10 @@ let postsInterviewer = async (data,id) => {
    }
 }
  
- let Home = {
+ let Updatesched = {
      render : async () => {
         let request = Utils.parseRequestURL()
-        let posts = await getPostsList('schedules',request.id)
+        let posts = await getPostToUpdate('schedules',request.id)
          let view =  /*html*/`
              <div id="viewing">
              <br><br>
@@ -46,13 +46,14 @@ let postsInterviewer = async (data,id) => {
              <br>
              Start Time : <input type="datetime" id="st" value=${posts.st} ><br><br>
              End Time : <input type="datetime" id="end" value=${posts.end}><br><br>
-            <input class="button" id="but" type="submit">
+            <button  id="but" type="button">Update</button>
              </div>                        
          `
          return view
      }
      , after_render: async () => {
          document.getElementById("but").addEventListener ("click", async () => {
+            console.log("hey");
              let  email1       = document.getElementById("email1").value;
              let email2        = document.getElementById("email2").value;
              let st        = document.getElementById("st").value;
@@ -61,11 +62,18 @@ let postsInterviewer = async (data,id) => {
             
             let data = { "email1": email1,"email2": email2, "st": st, "end": end};
             let re = Utils.parseRequestURL()
-            let posts=await  postsInterviewer(data,re.id);
+            try{
+                let posts=await  updatesInterviewer(data,re.id);
               
             console.log(posts);
+            
              document.getElementById("viewing").innerHTML +=/*html*/`${ posts["eor"].map(restu => 
              /*html*/`<h3>${restu}</h3>`).join('\n ')} `;
+            }
+            catch (err) {
+                console.log('Error getting documents', err)
+            }
+            
            
             
          })
@@ -75,4 +83,4 @@ let postsInterviewer = async (data,id) => {
   
   }
   
-  export default Home;
+  export default Updatesched;
